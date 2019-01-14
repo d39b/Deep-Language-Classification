@@ -1,0 +1,55 @@
+{
+    "layers" : [
+        {
+            "type" : "birnn",
+            "depth" : 2,
+            "cell_type" : "lstm",
+            "sizes" : [500, 500],
+            "activation" : "relu",
+            "concat_internal_state" : false
+        },
+        {
+            "type" : "gcn",
+            "activation" : "relu",
+            "adjacency" : "dep",
+            "use_gating" : true
+        }
+    ],
+    "optimizer" : {
+        "type" : "adadelta",
+        "learning_rate" : 1.0
+    },
+    "losses" : [
+        {
+            "type" : "l2_weight",
+            "lambda" : 0.00005
+        }
+    ],
+    "inputs" : [
+        {
+            "name" : "wordVectors",
+            "type" : "vector_sequence"
+        },
+        {
+            "name" : "dep",
+            "type" : "graph_structure"
+        },
+        {
+            "name" : "pos",
+            "type" : "class_sequence",
+            "embedding_size" : 32
+        },
+        {
+            "name" : "tokens",
+            "type" : "class_sequence",
+            "embedding_size" : 128
+        }
+    ],
+    "tasks" : [
+        {
+            "type" : "sentence_class",
+            "target" : "sentiment",
+            "loss" : "squared_error",
+            "output_layer" : "dense" 
+        }
+}

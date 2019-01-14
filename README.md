@@ -47,4 +47,4 @@ Explains how to start a websocket server that processes natural language sentenc
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE.txt)

@@ -1,0 +1,11 @@
+{
+    "corenlp_server" : "localhost",
+    "corenlp_port" : "9000",
+    "wordvector_file" : "word_vectors.txt",
+    "log_filename" : "query_server.log",
+    "models" : [
+        "saved_neural_network"
+    ],
+    "hostname" : "localhost",
+    "port" : 8765
+}
