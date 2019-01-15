@@ -19,4 +19,4 @@ For each sentence in `pattern-file` 10 complete sentences are created by replaci
 To specify a different placeholder symbol use the option `--pattern_mask`.  
 To change the number of output sentences created per sentence in `pattern-file` use the option `--num_sentences_per_pattern`.
 
-> python3 create-data.py fill-patterns pattern-file phrase-file output-file --pattern_mask * --num_sentences_per_pattern 42
+> python3 create_data.py fill-patterns pattern-file phrase-file output-file --pattern_mask * --num_sentences_per_pattern 42

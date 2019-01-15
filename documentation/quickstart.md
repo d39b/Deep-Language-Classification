@@ -2,9 +2,9 @@
 
 Consider a simple sentiment analysis task in which you are given a short movie review as natural language text. The goal is to classify the text as either 'positive', 'negative' or 'neutral'.
 
-Examples:
-"I watched the new Star Wars movie yesterday and it was great." -> positive
-"Honestly, the new Star Wars movie could not have been any worse." -> negative
+Examples:  
+"I watched the new Star Wars movie yesterday and it was great." -> positive  
+"Honestly, the new Star Wars movie could not have been any worse." -> negative  
 "The new Star Wars movie was alright, I just wish the story was less predictable." -> neutral
 
 ## Creating a dataset
@@ -20,12 +20,12 @@ A dataset file must conform to the format specified in section [Data format](dat
             "sentiment" : "positive"
         },
         {
-            "text" : "Honestly, the new Star Wars movie could not have been any worse."
+            "text" : "Honestly, the new Star Wars movie could not have been any worse.",
             "sentiment" : "negative"
         },
         {
             "text" : "The new Star Wars movie was alright, I just wish the story was less predictable.",
-            "sentiment" : "nail"
+            "sentiment" : "neutral"
         },
         ...
     ],
@@ -43,7 +43,7 @@ A dataset file must conform to the format specified in section [Data format](dat
 
 ## Numerical Representation
 
-Neural networks require numerical inputs like real-valued vectors or matrices. Therefore, the natural language sentences in our dataset file must be represented numerically, before we can train a neural network. For this purpose the script `create_data.py` can be used to add word vector, part-of-speech and syntactic dependency annotations to a dataset file. These annotations can then be used as inputs for the neural network. For more information see section [Numerical representation](numerical-representation.md) of the documentation.
+Neural networks require numerical inputs like real-valued vectors or matrices. Therefore, the natural language sentences in our dataset file must be represented numerically before we can train a neural network. For this purpose the script `create_data.py` can be used to add word vector, part-of-speech and syntactic dependency annotations to a dataset file. These annotations can then be used as inputs for the neural network. For more information see section [Numerical representation](numerical-representation.md) of the documentation.
 
 For example to add word vectors to a dataset file run:
 
@@ -57,7 +57,7 @@ For the example above, adding word vectors might yield a dataset file similar to
 {
     "data" : [
         {
-            "text" : "I watched the new Star Wars movie yesterday and it was great."
+            "text" : "I watched the new Star Wars movie yesterday and it was great.",
             "sentiment" : "positive",
             "wordVectors" : [
                 1,
@@ -73,7 +73,7 @@ For the example above, adding word vectors might yield a dataset file similar to
         "annotations" : [
             {
                 "type" : "sentence_class",
-                "name" : "activity"
+                "name" : "sentiment"
             },
             {
                 "type" : "vector_sequence",
@@ -115,7 +115,7 @@ To train a neural network, the model architecture must be specified in a model c
             "type" : "l2_weight",
             "lambda" : 0.0005
         }
-    ]
+    ],
     "inputs" : [
         {
             "type" : "vector_sequence",
@@ -143,9 +143,8 @@ The model is trained for 1000 steps with batches of size 32 and saved in a new f
 
 To use a previously trained neural network for inference, you can start a query server that receives natural language sentences on a websocket connection and returns the sentiment predicted by the neural network.
 
-To start the query server you need a configuration file like the following.
+To start the query server you need a configuration file `query-config.json` like the following.
 
-`query-config.json`
 
 ```javascript
 {
@@ -160,10 +159,10 @@ To start the query server you need a configuration file like the following.
 
 To start the server run:
 
-> python3 query_server.py --query_config query-config.json
+> python3 query_socket.py --query_config query-config.json
 
 To send queries to the server run:
-> python3 websocket_cli_client.py --hostname localhost --port 8765
+> python3 websocket_cli_client.py --hostname localhost --port 8765  
 > Query: "I really liked the new film by Christopher Nolan."
 
 The query server might then return the following JSON output with the correct sentiment classification:

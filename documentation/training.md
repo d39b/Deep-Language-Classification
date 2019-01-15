@@ -40,4 +40,4 @@ It is also possible to save and load neural network models for retraining with t
 
 This will create a new folder called `saved_model` with the saved model in it. To load this model for further training simply run:
 
-> python3 train.py dataset model-config -bs 32 -s 1000 -lm saved_model
+> python3 train.py dataset saved_model -bs 32 -s 1000 -lm

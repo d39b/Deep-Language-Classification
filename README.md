@@ -1,6 +1,6 @@
 # Deep Natural Language Classification
 
-This repository contains Python3 programs to solve natural language classification  tasks using Deep Neural Networks.  
+This repository contains Python3 programs to solve natural language classification  tasks using deep neural networks.  
 
 To train a natural language classifier you only need two files: a training dataset and a model configuration file. Dataset files must conform to a custom format and are parsed automatically. Model configurations are simple JSON files specifying the architecture, inputs and targets of a neural network classifier.
 
@@ -14,16 +14,16 @@ To train a natural language classifier you only need two files: a training datas
 
 ## Requirements
 
-* Python 3.*  
+* Python 3  
 * Tensorflow (see [installation instructions](https://www.tensorflow.org/install/), for better performance GPU use is recommended)  
 
 #### Optional:
-* Stanford CoreNLP Server to compute Part-Of-Speech tags and syntactic dependencies (see section [Setting up a Stanford CoreNLP server](documentation/corenlp-setup.md))
+* Stanford CoreNLP Server to compute part-of-speech tags and syntactic dependencies (see section [Setting up a Stanford CoreNLP server](documentation/corenlp-setup.md))
 
 ## Documentation
 
 * [Quickstart guide](documentation/quickstart.md)  
-A simple example of how to train a neural network for natural language classification. 
+A simple example of how to train a neural network for natural language classification.
 
 * [Dataset format](documentation/data-format.md)  
 Describes a JSON format for storing datasets containing natural language sentences with different types of annotations.

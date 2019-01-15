@@ -110,7 +110,7 @@ The dataset file in the following example contains an annotation `"entities"` of
     },
     "data" : [
         {
-            "text" : "Tomorrow after having lunch, we will visit my cousin in Berlin."
+            "text" : "Tomorrow after having lunch, we will visit my cousin in Berlin.",
             "entities" : [
                 {
                     "type" : "location",

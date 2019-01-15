@@ -12,7 +12,7 @@ Required:
 
 Optional:  
 `losses` : additional regularization loss terms, e.g. L2 regularization  
-`word_dropout` : word dropout regularization
+`word_dropout` : word dropout regularization  
 `initializers` : weight and bias initialization method
 
 After giving a simple example of a model configuration, the different model configuration options are described in more detail.
