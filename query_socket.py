@@ -24,11 +24,11 @@ class QueryModel:
             self.logger.error("model directory {} doesn't exist".format(model_file))
 
         config_filename = load_path.joinpath("model_config.json")
-        with config_filename.open('r') as fp:
+        with config_filename.open('r',encoding='utf8') as fp:
             self.config = json.load(fp)
 
         index_filename = load_path.joinpath("name_to_index.json")
-        with index_filename.open('r') as fp:
+        with index_filename.open('r',encoding='utf8') as fp:
             self.name_to_name_to_indices = json.load(fp)
 
         self.sentence_length = self.config['sentence_length']
@@ -81,7 +81,7 @@ class QueryServer:
 
     def __init__(self,args):
         self.query_config = None
-        with open(args.query_config,'r') as fp:
+        with open(args.query_config,'r',encoding='utf8') as fp:
             self.query_config = json.load(fp)
 
         log_filename = None

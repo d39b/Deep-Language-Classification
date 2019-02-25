@@ -45,11 +45,11 @@ def main(args):
             print("Error: directory doesn't exist")
 
         config_filename = load_path.joinpath("model_config.json")
-        with config_filename.open('r') as fp:
+        with config_filename.open('r',encoding='utf8') as fp:
             config = json.load(fp)
 
         index_filename = load_path.joinpath("name_to_index.json")
-        with index_filename.open('r') as fp:
+        with index_filename.open('r',encoding='utf8') as fp:
             name_to_name_to_indices = json.load(fp)
 
         sentence_length = config['sentence_length']
@@ -94,7 +94,7 @@ def main(args):
         print("Model loaded from: {}".format(args.config_or_model))
     #create a new model
     else:  
-        with open(args.config_or_model,'r') as fp:
+        with open(args.config_or_model,'r',encoding='utf8') as fp:
             config = json.load(fp)
 
         input_names = []
@@ -220,11 +220,11 @@ def save_model(dir,model,name_to_name_to_indices):
     else:
         #save model configuration file, with this the model can be recreated
         model_config_path = path.joinpath("model_config.json")
-        with model_config_path.open('w') as fp:
+        with model_config_path.open('w',encoding='utf8') as fp:
             json.dump(model.config,fp,indent=4)
         #save the dictionary from annotation names to dictionaries from strings to integers
         index_path = path.joinpath("name_to_index.json")
-        with index_path.open('w') as fp:
+        with index_path.open('w',encoding='utf8') as fp:
             json.dump(name_to_name_to_indices,fp,indent=4)
 
     return path

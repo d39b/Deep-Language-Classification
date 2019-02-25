@@ -184,7 +184,7 @@ class DataProcessor:
         self.word_to_index = {}
         self.vector_length = 0
         line_number = 0
-        with open(vector_file,'r') as fp:
+        with open(vector_file,'r',encoding='utf8') as fp:
             first_line = True
             for line in fp:
                 if first_line:
@@ -281,7 +281,7 @@ class DataProcessor:
             current_index = 0
             next_index = word_indices[list_index]
 
-            with open(vector_file,'r') as fp:
+            with open(vector_file,'r',encoding='utf8') as fp:
                 first_line = True
                 for line in fp:
                     if first_line:
@@ -431,7 +431,7 @@ class DataProcessor:
 
         #write found word vectors to new word vector file
         if not new_vector_file is None:
-            with open(new_vector_file,'w') as fp:
+            with open(new_vector_file,'w',encoding='utf8') as fp:
                 for word, vec in word_to_vector.items():
                     output_string = word
                     for i in range(len(vec)):
@@ -635,13 +635,13 @@ class DataProcessor:
         """
 
         patterns = None
-        with open(pattern_file,'r') as fp:
+        with open(pattern_file,'r',encoding='utf8') as fp:
             patterns = json.load(fp)
         patterns_metadata = patterns['metadata']
         patterns = patterns['data']
 
         phrases = None
-        with open(phrase_file,'r') as fp:
+        with open(phrase_file,'r',encoding='utf8') as fp:
             phrases = json.load(fp)
         phrases_metadata = phrases['metadata']
         phrases = phrases['data']
@@ -874,7 +874,7 @@ class DataProcessor:
 
         #load words from new_vetor_file
         words = []
-        with open(new_vector_file,'r') as fp:
+        with open(new_vector_file,'r',encoding='utf8') as fp:
             for line in fp:
                 tmp = line.rstrip().split(" ")
                 word = tmp[0]
@@ -904,7 +904,7 @@ class DataProcessor:
         word_indices.sort()
 
         #load all necessary words using the list of line numbers
-        with open(new_vector_file,'a') as fp:
+        with open(new_vector_file,'a',encoding='utf8') as fp:
             list_index = 0
             current_index = 0
             next_index = 0
@@ -912,7 +912,7 @@ class DataProcessor:
             if len(word_indices) > 0:
                 next_index = word_indices[list_index]
 
-            with open(old_vector_file,'r') as ofp:
+            with open(old_vector_file,'r',encoding='utf8') as ofp:
                 first_line = True
                 for line in ofp:
                     if first_line:
@@ -935,12 +935,12 @@ class DataProcessor:
 
     def load_file(self,input_file):
         result = None
-        with open(input_file,'r') as fp:
+        with open(input_file,'r',encoding='utf8') as fp:
             result = json.load(fp)
         return result
 
     def write_file(self,data,output_file):
-        with open(output_file,'w') as fp:
+        with open(output_file,'w',encoding='utf8') as fp:
             json.dump(data,fp,ensure_ascii=False,indent=4)
 
 

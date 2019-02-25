@@ -22,7 +22,7 @@ def parse_json_file(filename,input_names,target_names):
     """
 
     json_content = None
-    with open(filename,'r') as fp:
+    with open(filename,'r',encoding="utf8") as fp:
         json_content = json.load(fp)
 
     metadata = json_content['metadata']
@@ -124,7 +124,7 @@ def parse_json_file_with_index(filename,name_to_name_to_indices,input_names,targ
     #check if input is filename or dataset (as dictionary)
     json_content = None
     if isinstance(filename, str):
-        with open(filename,'r') as fp:
+        with open(filename,'r',encoding="utf8") as fp:
             json_content = json.load(fp)
     else:
         json_content = filename
